@@ -1,0 +1,40 @@
+<img id="img" style="width: 600px; height: 300px;" src="/output/original.png">
+<h1 id="loading" style="display: none">Updating.....</h1>
+
+<div>
+	Thay the
+	<select id="src" name="src">
+		<option value="cuaso_1">Cua so 1</option>
+		<option value="cuaso_2">Cua so 2</option>
+		<option value="cuaso_3">Cua so 3</option>
+		<option value="cuaso_4">Cua so 4</option>
+	</select>
+	Bang
+	<select id="des" name="des">
+		<option value="cuaso_1">Cua so 1</option>
+		<option value="cuaso_2">Cua so 2</option>
+		<option value="cuaso_3">Cua so 3</option>
+		<option value="cuaso_4">Cua so 4</option>
+	</select>
+	<input type="button" onclick="doSubmit()" value="OK!">
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript">
+	function doSubmit() {
+		document.querySelector('#loading').style.display = 'block'
+		axios.get('/hehe', {
+			params: {
+				src: document.querySelector('#src').value,
+				des: document.querySelector('#des').value,
+			}
+		}).then(({data}) => {
+			document.querySelector('#img').setAttribute('src', '')
+			document.querySelector('#img').setAttribute('src', 'output/' + data.data.png)
+		}).finally(() => {
+			document.querySelector('#loading').style.display = 'none'
+		})
+
+		return false
+	}
+</script>
