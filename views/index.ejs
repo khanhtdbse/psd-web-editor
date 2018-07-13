@@ -1,9 +1,15 @@
 <img id="img" style="width: 600px; height: 300px;" src="/output/original.png">
 <h1 id="loading" style="display: none">Updating.....</h1>
 
+<style type="text/css">
+	.disable {
+		display: none;
+	}
+</style>
 <div>
 	Thay the
-	<select id="src" name="src">
+	<select id="src" name="src" onchange="updateOption(event)">
+		<option value=""></option>
 		<option value="cuaso_1">Cua so 1</option>
 		<option value="cuaso_2">Cua so 2</option>
 		<option value="cuaso_3">Cua so 3</option>
@@ -11,10 +17,14 @@
 	</select>
 	Bang
 	<select id="des" name="des">
-		<option value="cuaso_1">Cua so 1</option>
-		<option value="cuaso_2">Cua so 2</option>
-		<option value="cuaso_3">Cua so 3</option>
-		<option value="cuaso_4">Cua so 4</option>
+		<option value="cuaso_1a" class="disable" disabled id="cuaso_1a">Cua so 1a</option>
+		<option value="cuaso_1b" class="disable" disabled id="cuaso_1b">Cua so 1b</option>
+		<option value="cuaso_2a" class="disable" disabled id="cuaso_2a">Cua so 2a</option>
+		<option value="cuaso_2b" class="disable" disabled id="cuaso_2b">Cua so 2b</option>
+		<option value="cuaso_3a" class="disable" disabled id="cuaso_3a">Cua so 3a</option>
+		<option value="cuaso_3b" class="disable" disabled id="cuaso_3b">Cua so 3b</option>
+		<option value="cuaso_4a" class="disable" disabled id="cuaso_4a">Cua so 4a</option>
+		<option value="cuaso_4b" class="disable" disabled id="cuaso_4b">Cua so 4b</option>
 	</select>
 	<input type="button" onclick="doSubmit()" value="OK!">
 </div>
@@ -36,5 +46,88 @@
 		})
 
 		return false
+	}
+
+	function updateOption(event) {
+		document.querySelector('#des').value = ""
+		
+		switch (event.target.value) {
+			case 'cuaso_1':
+				document.querySelector('#cuaso_1a').classList.remove('disable')
+				document.querySelector('#cuaso_1b').classList.remove('disable')
+				document.querySelector('#cuaso_2a').classList.add('disable')
+				document.querySelector('#cuaso_2b').classList.add('disable')
+				document.querySelector('#cuaso_3a').classList.add('disable')
+				document.querySelector('#cuaso_3b').classList.add('disable')
+				document.querySelector('#cuaso_4a').classList.add('disable')
+				document.querySelector('#cuaso_4b').classList.add('disable')
+
+				document.querySelector('#cuaso_1a').removeAttribute('disabled')
+				document.querySelector('#cuaso_1b').removeAttribute('disabled')
+				document.querySelector('#cuaso_2a').setAttribute('disable', true)
+				document.querySelector('#cuaso_2b').setAttribute('disable', true)
+				document.querySelector('#cuaso_3a').setAttribute('disable', true)
+				document.querySelector('#cuaso_3b').setAttribute('disable', true)
+				document.querySelector('#cuaso_4a').setAttribute('disable', true)
+				document.querySelector('#cuaso_4b').setAttribute('disable', true)
+			break
+			case 'cuaso_2':
+				document.querySelector('#cuaso_1a').classList.add('disable')
+				document.querySelector('#cuaso_1b').classList.add('disable')
+				document.querySelector('#cuaso_2a').classList.remove('disable')
+				document.querySelector('#cuaso_2b').classList.remove('disable')
+				document.querySelector('#cuaso_3a').classList.add('disable')
+				document.querySelector('#cuaso_3b').classList.add('disable')
+				document.querySelector('#cuaso_4a').classList.add('disable')
+				document.querySelector('#cuaso_4b').classList.add('disable')
+
+				document.querySelector('#cuaso_1a').setAttribute('disable', true)
+				document.querySelector('#cuaso_1b').setAttribute('disable', true)
+				document.querySelector('#cuaso_2a').removeAttribute('disabled')
+				document.querySelector('#cuaso_2b').removeAttribute('disabled')
+				document.querySelector('#cuaso_3a').setAttribute('disable', true)
+				document.querySelector('#cuaso_3b').setAttribute('disable', true)
+				document.querySelector('#cuaso_4a').setAttribute('disable', true)
+				document.querySelector('#cuaso_4b').setAttribute('disable', true)
+			break
+			case 'cuaso_3':
+				document.querySelector('#cuaso_1a').classList.add('disable')
+				document.querySelector('#cuaso_1b').classList.add('disable')
+				document.querySelector('#cuaso_2a').classList.add('disable')
+				document.querySelector('#cuaso_2b').classList.add('disable')
+				document.querySelector('#cuaso_3a').classList.remove('disable')
+				document.querySelector('#cuaso_3b').classList.remove('disable')
+				document.querySelector('#cuaso_4a').classList.add('disable')
+				document.querySelector('#cuaso_4b').classList.add('disable')
+
+				document.querySelector('#cuaso_1a').setAttribute('disable', true)
+				document.querySelector('#cuaso_1b').setAttribute('disable', true)
+				document.querySelector('#cuaso_2a').setAttribute('disable', true)
+				document.querySelector('#cuaso_2b').setAttribute('disable', true)
+				document.querySelector('#cuaso_3a').removeAttribute('disabled')
+				document.querySelector('#cuaso_3b').removeAttribute('disabled')
+				document.querySelector('#cuaso_4a').setAttribute('disable', true)
+				document.querySelector('#cuaso_4b').setAttribute('disable', true)
+			break
+			case 'cuaso_4':
+				document.querySelector('#cuaso_1a').classList.add('disable')
+				document.querySelector('#cuaso_1b').classList.add('disable')
+				document.querySelector('#cuaso_2a').classList.add('disable')
+				document.querySelector('#cuaso_2b').classList.add('disable')
+				document.querySelector('#cuaso_3a').classList.add('disable')
+				document.querySelector('#cuaso_3b').classList.add('disable')
+				document.querySelector('#cuaso_4a').classList.remove('disable')
+				document.querySelector('#cuaso_4b').classList.remove('disable')
+
+				document.querySelector('#cuaso_1a').setAttribute('disable', true)
+				document.querySelector('#cuaso_1b').setAttribute('disable', true)
+				document.querySelector('#cuaso_2a').setAttribute('disable', true)
+				document.querySelector('#cuaso_2b').setAttribute('disable', true)
+				document.querySelector('#cuaso_3a').setAttribute('disable', true)
+				document.querySelector('#cuaso_3b').setAttribute('disable', true)
+				document.querySelector('#cuaso_4a').removeAttribute('disabled')
+				document.querySelector('#cuaso_4b').removeAttribute('disabled')
+			break
+		}
 	}
 </script>

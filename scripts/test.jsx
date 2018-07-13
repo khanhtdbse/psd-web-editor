@@ -5,7 +5,7 @@ app.displayDialogs = DialogModes.NO;
 const projectRoot = '/c/Users/khanhpro/Documents/Code/psd'
 const targetDoc = app.open(new File(projectRoot + "/psd-files/b.psd"))
 
-const sampleDoc = app.open(new File(projectRoot + "/psd-files/cuaso.psd"))
+const sampleDoc = app.open(new File(projectRoot + "/psd-files/cuaso2.psd"))
 
 
 var vars = new File(projectRoot + '/scripts/vars.json');  
@@ -71,8 +71,7 @@ function timLayer(doc, tenLayer) {
 }
 
 function closePhotoshop() {
-	for (var i = 0; i < app.documents.length; i++) {
-	    app.documents[i].close(SaveOptions.DONOTSAVECHANGES)
-	}
-	photoshop.quit()
+	while(app.documents.length > 0) {  
+    	app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);  
+    }  
 }
